@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 
 import "./globals.css";
+import { SidebarWrapper } from "@/components/Sidebar/sidebar-wrapper";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,7 +18,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "KodingYuk HRIS",
-  description: "Dashboard HRIS terintegrasi Odoo 17 dengan login berbasis role.",
+  description:
+    "Dashboard HRIS terintegrasi Odoo 17 dengan login berbasis role.",
 };
 
 export default function RootLayout({
@@ -30,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-slate-50 text-slate-950 antialiased`}
       >
-        {children}
+        <SidebarWrapper>{children}</SidebarWrapper>
       </body>
     </html>
   );

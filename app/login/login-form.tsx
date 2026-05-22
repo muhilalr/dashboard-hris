@@ -94,7 +94,7 @@ export function LoginForm({
   };
 
   return (
-    <section className="flex items-center justify-center bg-[linear-gradient(180deg,_#f8fafc_0%,_#e2e8f0_100%)] px-6 py-12">
+    <section className="flex items-center justify-center bg-slate-50m px-6 h-screen">
       <div className="w-full max-w-md rounded-[2rem] border border-slate-200 bg-white/90 p-8 shadow-[0_24px_80px_rgba(15,23,42,0.12)] backdrop-blur">
         <div className="space-y-3">
           <Image
@@ -115,7 +115,7 @@ export function LoginForm({
               htmlFor="login"
               className="text-sm font-medium text-slate-700"
             >
-              Email atau username Odoo
+              Email
             </label>
             <input
               id="login"
@@ -157,7 +157,7 @@ export function LoginForm({
             disabled={submitting || googleSubmitting}
             className="w-full rounded-2xl bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
           >
-            {submitting ? "Memproses login..." : "Masuk dengan Odoo"}
+            {submitting ? "Memproses login..." : "Masuk"}
           </button>
         </form>
 

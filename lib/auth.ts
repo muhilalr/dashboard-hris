@@ -13,9 +13,7 @@ import {
 const googleProviderEnabled =
   Boolean(process.env.GOOGLE_CLIENT_ID) &&
   Boolean(process.env.GOOGLE_CLIENT_SECRET);
-const devRoleAuthEnabled =
-  process.env.NODE_ENV !== "production" ||
-  process.env.ENABLE_DEV_ROLE_LOGIN === "true";
+const devRoleAuthEnabled = process.env.ENABLE_DEV_ROLE_LOGIN === "true";
 
 const demoUsers: Record<
   UserRole,
@@ -61,17 +59,18 @@ const demoUsers: Record<
 export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/login",
+    error: "/auth/error",
   },
   session: {
     strategy: "jwt",
   },
   providers: [
     CredentialsProvider({
-      name: "Odoo Credentials",
+      name: "Odoo Password",
       id: "odoo-credentials",
       credentials: {
         login: {
-          label: "Email atau Username",
+          label: "Email",
           type: "text",
         },
         password: {
@@ -84,7 +83,7 @@ export const authOptions: NextAuthOptions = {
         const password = credentials?.password;
 
         if (!login || !password) {
-          throw new Error("Email/username dan password wajib diisi.");
+          throw new Error("Email dan password Odoo wajib diisi.");
         }
 
         const profile = await authenticateWithOdoo(login, password);
@@ -163,7 +162,18 @@ export const authOptions: NextAuthOptions = {
         return `/auth/error?code=GoogleAccountEmailRequired`;
       }
 
-      const profile = await findOdooUserByEmail(user.email);
+      let profile = null;
+
+      try {
+        profile = await findOdooUserByEmail(user.email);
+      } catch (error) {
+        const message =
+          error instanceof Error
+            ? error.message
+            : "Login Google gagal saat menghubungkan ke Odoo.";
+
+        return `/auth/error?code=${encodeURIComponent(message)}`;
+      }
 
       if (!profile) {
         return `/auth/error?code=GoogleAccountNotLinked`;

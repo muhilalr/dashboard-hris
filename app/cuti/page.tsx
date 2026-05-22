@@ -989,53 +989,6 @@ export default function CutiPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* ── Header ── */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-20">
-        <div className="max-w-screen-xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center">
-              <svg
-                className="w-4 h-4 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2.5}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-900 leading-none">
-                KodingYuk HRIS
-              </p>
-              <p className="text-xs text-slate-500 mt-0.5">Manajemen Cuti</p>
-            </div>
-          </div>
-          <button
-            onClick={() => setShowNewModal(true)}
-            className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-medium px-4 py-2 rounded-lg transition-colors"
-          >
-            <svg
-              className="w-3.5 h-3.5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2.5}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 4v16m8-8H4"
-              />
-            </svg>
-            Ajukan Cuti
-          </button>
-        </div>
-      </header>
 
       <div className="max-w-screen-xl mx-auto px-6 py-8">
         <div className="flex gap-8">
@@ -1211,12 +1164,27 @@ export default function CutiPage() {
                 </p>
               </div>
               {stats.pending > 0 && (
-                <div className="flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-700 rounded-xl px-3 py-2">
-                  <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                  <span className="text-xs font-medium">
-                    {stats.pending} menunggu persetujuan
-                  </span>
-                </div>
+               
+                  <button
+            onClick={() => setShowNewModal(true)}
+            className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-medium px-4 py-2 rounded-lg transition-colors"
+          >
+            <svg
+              className="w-3.5 h-3.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2.5}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+            Ajukan Cuti
+          </button>
+              
               )}
             </div>
 

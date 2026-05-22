@@ -1138,21 +1138,19 @@ export default function TrainingSchedulerPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans">
-      {/* ── Top Nav ── */}
-      <header className="bg-white border-b border-slate-100 sticky top-0 z-30">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-violet-600 rounded-lg flex items-center justify-center text-white text-sm font-bold shadow-sm">
-              KY
-            </div>
-            <div className="hidden sm:block">
-              <p className="text-xs text-slate-400">KodingYuk HRIS</p>
-              <p className="text-sm font-semibold text-slate-700 -mt-0.5">
-                Training Scheduler
-              </p>
-            </div>
+
+      <main className="px-4 sm:px-6 py-6 space-y-6">
+        {/* ── Page Title ── */}
+        <div className="flex items-center justify-between">
+          <div>
+
+          <h1 className="text-2xl font-bold text-slate-800">Jadwal Training</h1>
+          <p className="text-sm text-slate-500 mt-0.5">
+            Kelola sesi pelatihan dan daftar hadir intern KodingYuk.
+          </p>
           </div>
-          <div className="flex items-center gap-2">
+
+            <div className="flex items-center gap-2">
             {/* View toggle */}
             <div className="flex bg-slate-100 rounded-lg p-0.5">
               {(["list", "calendar"] as ViewMode[]).map((v) => (
@@ -1173,16 +1171,6 @@ export default function TrainingSchedulerPage() {
               <span className="hidden sm:inline">Jadwal Baru</span>
             </button>
           </div>
-        </div>
-      </header>
-
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6 space-y-6">
-        {/* ── Page Title ── */}
-        <div>
-          <h1 className="text-2xl font-bold text-slate-800">Jadwal Training</h1>
-          <p className="text-sm text-slate-500 mt-0.5">
-            Kelola sesi pelatihan dan daftar hadir intern KodingYuk.
-          </p>
         </div>
 
         {/* ── Stats ── */}
